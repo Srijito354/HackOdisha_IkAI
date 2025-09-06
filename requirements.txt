@@ -1,0 +1,12 @@
+fastmcp
+flask
+flask-cors
+pandas
+python-dotenv
+sarvamai
+uvicorn
+fastapi
+mcp
+markdownify
+readabilipy
+httpx

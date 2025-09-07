@@ -8,7 +8,7 @@ from sarvamai import SarvamAI
 
 load_dotenv()
 
-# Load environment variables
+# Load environment variables - Fixed to match your .env file
 SARVAMAI_KEY = os.getenv("SARVAMAI_KEY")
 DATABASE_PATH = os.getenv("DATABASE_PATH", "./demo.db")
 
@@ -17,6 +17,10 @@ client = SarvamAI(api_subscription_key=SARVAMAI_KEY)
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for web requests
+
+# Utility: check auth
+#def check_auth(req):
+    #return req.headers.get("Authorization") == f"Bearer {AUTH_TOKEN}"
 
 def nl_to_sql_sarvam(nl_question: str, max_tokens: int = 100) -> str:
 
@@ -51,6 +55,11 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload_csv():
+    #if not check_auth(request):
+        #return jsonify({"error": "Unauthorized"}), 401
+
+    #if "file" not in request.files:
+        #return jsonify({"error": "No file uploaded"}), 400 This shouldn't have been included, but it does for some reason. Sheesh!
 
     file = request.files["file"]
     df = pd.read_csv(file)
@@ -63,6 +72,8 @@ def upload_csv():
 
 @app.route("/upload-url", methods=["POST"])  # Added for easier testing
 def upload_csv_from_url():
+    #if not check_auth(request):
+    #return jsonify({"error": "Unauthorized"}), 401
 
     data = request.json
     url = data.get("url")
@@ -80,6 +91,8 @@ def upload_csv_from_url():
 
 @app.route("/query", methods=["POST"])
 def query_nl():
+    #if not check_auth(request):
+    #return jsonify({"error": "Unauthorized"}), 401
 
     data = request.json
     question = data.get("question")

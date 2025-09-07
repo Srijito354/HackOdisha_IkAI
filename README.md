@@ -40,7 +40,9 @@ By removing the technical barriers to database access, VaaniDB can:
 
 
 ##
-Thank you for considering VaaniDB! We are excited about the potential of enabling everyone to talk to their data effortlessly.
+Thank you for considering VaaniDB! We are excited about the potential of enabling everyone to talk to their data effortlessly...
+
+Below is the folder structure of this repo:
 
 ```
 .

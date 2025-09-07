@@ -36,7 +36,7 @@ def nl_to_sql_sarvam(nl_question: str, max_tokens: int = 100) -> str:
         f"You are an assistant that converts natural language questions into SQL queries for a SQLite table named 'data'.\n"
         f"Available columns: {', '.join(columns)}"
         f"Question: {nl_question}\n"
-        f"Only return the SQL query, nothing else. Even when the Question is in a different language."
+        f"Only return the SQL query, nothing else."
     )
     try:
         resp = client.chat.completions(
@@ -117,6 +117,7 @@ def query_nl():
         conn.close()
 
     return jsonify({"sql": sql_query, "result": result}), 200
+
 
 @app.route("/summarize", methods=["POST"])
 def summarize_result():

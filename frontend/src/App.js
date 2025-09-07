@@ -25,7 +25,7 @@ const [loading, setLoading] = useState(false);
 
  try {
 setLoading(true);
- setResponse("Loading: Uploading your file..."); E
+ setResponse("Loading: Uploading your file..."); 
 
  const res = await fetch("http://localhost:5000/upload", {
  method: "POST",

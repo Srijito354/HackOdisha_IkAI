@@ -16,7 +16,7 @@ DATABASE_PATH = os.getenv("DATABASE_PATH", "./demo.db")
 # Initialize Sarvam AI client
 client = SarvamAI(api_subscription_key=SARVAMAI_KEY)
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)  # Enable CORS for web requests
 
 def nl_to_sql_sarvam(nl_question: str, max_tokens: int = 100) -> str:
@@ -133,6 +133,6 @@ def summarize_result():
     except Exception as e:
         return jsonify({"error": f"Sarvam AI error: {str(e)}"}), 500
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)

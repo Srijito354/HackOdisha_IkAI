@@ -149,7 +149,7 @@ accept=".csv"
  )}
 
       {/* Data Table Preview */}
-      {tableData.length > 0 && (
+      {tableData?.length && (
         <div className="table-responsive mt-4">
           <table className="table table-striped table-bordered">
             <thead className="thead-dark">

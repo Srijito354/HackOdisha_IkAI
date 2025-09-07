@@ -4,8 +4,6 @@ Welcome to VaaniDB... Your talking database tool that let's you practically chat
 
 The only limit is your imagination!
 
-So, what you waiting for? Click the link to get started : <link>https://vaanidb-1.onrender.com</link>
-
 
 ## Features
 

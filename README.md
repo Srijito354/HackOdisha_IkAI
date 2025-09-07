@@ -40,4 +40,31 @@ By removing the technical barriers to database access, VaaniDB can:
 
 
 ##
-Thank you for considering VaaniDB! I am excited about the potential of enabling everyone to talk to their data effortlessly.
+Thank you for considering VaaniDB! We are excited about the potential of enabling everyone to talk to their data effortlessly.
+
+```
+.
+├── README.md
+├── app.py
+├── demo.db
+├── frontend
+│   ├── README.md
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   └── src
+│       ├── App.js
+│       ├── App.test.js
+│       ├── App1.css
+│       ├── index.css
+│       ├── index.js
+│       ├── logo.svg
+│       ├── reportWebVitals.js
+│       └── setupTests.js
+└── requirements.txt

@@ -1,3 +1,4 @@
+
 import os
 import sqlite3
 import pandas as pd
@@ -15,7 +16,7 @@ DATABASE_PATH = os.getenv("DATABASE_PATH", "./demo.db")
 # Initialize Sarvam AI client
 client = SarvamAI(api_subscription_key=SARVAMAI_KEY)
 
-app = Flask(__name__)
+app = Flask(_name_)
 CORS(app)  # Enable CORS for web requests
 
 def nl_to_sql_sarvam(nl_question: str, max_tokens: int = 100) -> str:
@@ -61,27 +62,22 @@ def upload_csv():
 
     return jsonify({"message": "CSV uploaded and stored in DB"}), 200
 
-
-
 @app.route("/upload-url", methods=["POST"])  # Added for easier testing
 def upload_csv_from_url():
 
     data = request.json
     url = data.get("url")
-if not url:
-    return jsonify({"error": "No URL provided"}), 400
+    if not url:
+        return jsonify({"error": "No URL provided"}), 400
 
     try:
         df = pd.read_csv(url)
         conn = sqlite3.connect(DATABASE_PATH)
         df.to_sql("data", conn, if_exists="replace", index=False)
-    conn.close()
-      return jsonify({"message": "CSV uploaded from URL and stored in DB"}), 200
-      except Exception as e:
-      return jsonify({"error": f"Failed to load CSV: {str(e)}"}), 400
-
-
-
+        conn.close()
+        return jsonify({"message": "CSV uploaded from URL and stored in DB"}), 200
+    except Exception as e:
+        return jsonify({"error": f"Failed to load CSV: {str(e)}"}), 400
 
 @app.route("/query", methods=["POST"])
 def query_nl():
@@ -137,6 +133,6 @@ def summarize_result():
     except Exception as e:
         return jsonify({"error": f"Sarvam AI error: {str(e)}"}), 500
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=False)

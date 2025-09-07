@@ -1,4 +1,3 @@
-
 import os
 import sqlite3
 import pandas as pd
@@ -52,22 +51,15 @@ def home():
 
 @app.route("/upload", methods=["POST"])
 def upload_csv():
+
     file = request.files["file"]
     df = pd.read_csv(file)
 
-    # Store in SQLite
     conn = sqlite3.connect(DATABASE_PATH)
     df.to_sql("data", conn, if_exists="replace", index=False)
     conn.close()
 
-    # Convert first few rows of DataFrame to JSON for preview
-    preview = df.head(20).to_dict(orient="records")  # show only first 20 rows
-
-    return jsonify({
-        "message": "CSV uploaded and stored in DB",
-        "preview": preview,
-        "columns": df.columns.tolist()
-    }), 200
+    return jsonify({"message": "CSV uploaded and stored in DB"}), 200
 
 @app.route("/upload-url", methods=["POST"])  # Added for easier testing
 def upload_csv_from_url():

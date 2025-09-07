@@ -16,7 +16,7 @@ DATABASE_PATH = os.getenv("DATABASE_PATH", "./demo.db")
 # Initialize Sarvam AI client
 client = SarvamAI(api_subscription_key=SARVAMAI_KEY)
 
-app = Flask(_name_)
+app = Flask(__name__)
 CORS(app)  # Enable CORS for web requests
 
 def nl_to_sql_sarvam(nl_question: str, max_tokens: int = 100) -> str:
